@@ -2,34 +2,30 @@ body {
   padding: 0;
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #354c6e
 }
 a {
   color: #00B7FF;
-}
-
-div {
-    outline: solid red 2pt;
 }
 
 #main-container {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    position: relative;
 }
-#image-0, #image-1, #image-2 {
+.frame {
+    position: absolute;
+
     height: 110vh;
     width: 110vw;
-}
-#image-1, #image-2 {
-    display: none;
+    visibility: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
+
 #image-0 {
-    background-color: blue
-}
-#image-1 {
-    background-color: chocolate
-}
-#image-2 {
-    background-color: royalblue;
+    visibility: visible;
 }

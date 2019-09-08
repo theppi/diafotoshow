@@ -3,14 +3,18 @@ const express = require('express'),
     fs = require('fs'),
     config = require('../config.json');
 
-/* GET home page. */
 router.get('/images', function(req, res, next) {
     res.json(fs.readdirSync(config.imagefolder));
 });
 
-router.get('/images/:index', function(req,res,next) {
-    let imagepath = fs.readdirSync(config.imagefolder)[req.params.index];
-    res.send('/gallery/' + imagepath);
-});
 
+router.get('/image/:index', function(req,res,next) {
+    let images = fs.readdirSync(config.imagefolder);
+    let index = parseInt(req.params.index);
+    let result = {
+        data: '/gallery/' + images[index], 
+        next: index >= images.length - 1 ? 0 : index + 1
+    };
+    res.json(result);
+});
 module.exports = router;
